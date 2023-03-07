@@ -1,9 +1,12 @@
-﻿using System.Xml.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace WebApplication1.Models
 {
     public class ArtProduct
     {
+        [Key]
         public int ArtId { get; set; }
         public string ArtName { get; set; }
         public string ArtDesc { get; set; }
@@ -11,6 +14,8 @@ namespace WebApplication1.Models
         public bool isAvailable { get; set; } //sold or available
         public string ArtDimensions { get; set; }
         public int ArtScore { get; set; }
+
+        [NotMapped]
         public IFormFile imgFile { get; set; }
         public byte[]? imgBytes { get; set; }
 

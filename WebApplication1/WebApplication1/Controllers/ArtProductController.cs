@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Data;
 using System.Data.SqlClient;
+using WebApplication1.Data;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -13,12 +14,12 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class ArtProductController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
-        JsonSerializer serializer = new JsonSerializer();
 
-        public ArtProductController(IConfiguration configuration)
+        private readonly AppDbContext _context;
+
+        public ArtProductController(AppDbContext context)
         {
-            _configuration = configuration;
+            _context = context;
         }
 
         [HttpGet]
@@ -27,52 +28,39 @@ namespace WebApplication1.Controllers
         {
             List<ArtProduct> artList = new List<ArtProduct>();
 
-            string query = @"select artId, ArtName, ArtDesc, ArtPrice, ArtDimensions, ArtScore, isAvailable, ImgBytes from [ArtProductDB].[dbo].[ArtProduct]";
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("ArtProductAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader);
-                    string JsonResponse = string.Empty;
-                    JsonResponse = JsonConvert.SerializeObject(table);
-                    artList = JsonConvert.DeserializeObject<List<ArtProduct>>(JsonResponse);
-
-                    myReader.Close();
-                    myCon.Close();
-                }
+            try {
+                artList = _context.ArtProducts.ToList();
+            }
+            catch{
+                return null; // An error occured
             }
 
             return artList;
         }
 
+
         [HttpPost]
         [Route("~/api/PostProducts")]
-        public JsonResult Post([FromForm] ArtProduct prod)
+        public string Post([FromForm] ArtProduct prod)
         {
 
-            string query = @" insert into dbo.ArtProduct values ('" + prod.ArtName + "','" + prod.ArtDesc + "','" + prod.ArtPrice + "','" + prod.ArtDimensions + "','" + prod.ArtScore + "','"+ prod.isAvailable + "', CAST('" + prod.imgFile + @"' AS VARBINARY(MAX)))";
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("ArtProductAppCon");
-            SqlDataReader myReader;
-            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                myCon.Open();
-                using (SqlCommand myCommand = new SqlCommand(query, myCon))
-                {
-                    myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
-
-                    myReader.Close();
-                    myCon.Close();
-                }
+                prod.imgFile.CopyTo(memoryStream);
+                prod.imgBytes = memoryStream.ToArray();
             }
 
-            return new JsonResult("Added Successfully");
+            try
+            {
+                _context.ArtProducts.Add(prod);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return null; // An error occured
+            }
+
+            return "Added Successfully";
         }
     }
 }
