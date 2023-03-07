@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Data;
@@ -10,7 +11,7 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Products")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ArtProductController : ControllerBase
     {
@@ -23,7 +24,6 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/GetProducts")]
         public List<ArtProduct> Get()
         {
             List<ArtProduct> artList = new List<ArtProduct>();
@@ -38,9 +38,24 @@ namespace WebApplication1.Controllers
             return artList;
         }
 
+        [HttpGet("{id:int}")]
+        public ArtProduct Get(int id)
+        {
+            ArtProduct artProduct = new ArtProduct();
+
+            try
+            {
+                artProduct = _context.ArtProducts.First(a => a.ArtId == id);
+            }
+            catch
+            {
+                return null; // An error occured
+            }
+
+            return artProduct;
+        }
 
         [HttpPost]
-        [Route("~/api/PostProducts")]
         public string Post([FromForm] ArtProduct prod)
         {
 
