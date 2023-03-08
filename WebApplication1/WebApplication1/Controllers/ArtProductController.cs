@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Data;
@@ -76,6 +77,41 @@ namespace WebApplication1.Controllers
             }
 
             return "Added Successfully";
+        }
+
+        [HttpPut]
+        public string Put([FromForm] ArtProduct prod)
+        {
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                prod.imgFile.CopyTo(memoryStream);
+                prod.imgBytes = memoryStream.ToArray();
+            }
+
+            try
+            {
+                ArtProduct product = _context.ArtProducts.Find(prod.ArtId);
+                if (product != null)
+                {
+
+                    // Make changes on entity
+                    product.ArtName = prod.ArtName;
+                    product.ArtDesc = prod.ArtDesc;
+                    product.ArtPrice = prod.ArtPrice;
+                    product.ArtScore = prod.ArtScore;
+                    product.isAvailable = prod.isAvailable;
+                    product.ArtDimensions = prod.ArtDimensions;
+                    product.imgBytes = prod.imgBytes;
+                }
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return null; // An error occured
+            }
+
+            return "Updated Successfully";
         }
     }
 }
