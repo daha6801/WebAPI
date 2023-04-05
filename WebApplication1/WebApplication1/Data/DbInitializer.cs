@@ -20,15 +20,15 @@ namespace WebApplication1.Data
                 b.HasData(new ArtProduct
                 {
                     ArtId = 1,
-                    ArtName = "Harry Potter and the Sorcerer's Stone",
-                    ArtDesc = "Harry Potter's life is miserable. His parents are dead and he's stuck with his heartless relatives, who force him to live in a tiny closet under the stairs.",
+                    ArtName = "Mona Lisa",
+                    ArtDesc = "Mona Lisa by Leanardo da Vinci",
                     ArtPrice = 2000,
                     ArtDimensions = "7*12",
-                    ArtScore = 15,
+                    ArtScore = 1500,
                     isAvailable = true,
-                    imgBytes = new byte[0],
+                    imgBytes = File.ReadAllBytes($"Data/Images/Mona_Lisa.jpg"),
                 });
-                b.HasData(new ArtProduct
+                /*b.HasData(new ArtProduct
                 {
                     ArtId = 2,
                     ArtName = "Harry Potter and the Chamber of Secrets",
@@ -49,7 +49,7 @@ namespace WebApplication1.Data
                     ArtScore = 35,
                     isAvailable = true,
                     imgBytes = new byte[0],
-                });
+                });*/
             });
         }
     }
