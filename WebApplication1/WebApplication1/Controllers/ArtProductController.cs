@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using WebApplication1.Data;
@@ -39,8 +40,8 @@ namespace WebApplication1.Controllers
             return artList;
         }
 
-        [HttpGet("{id:int}")]
-        public ArtProduct Get(int id)
+        [HttpGet("{id:Guid}")]
+        public ArtProduct Get(Guid id)
         {
             ArtProduct artProduct = new ArtProduct();
 
@@ -112,6 +113,25 @@ namespace WebApplication1.Controllers
             }
 
             return "Updated Successfully";
+        }
+
+        [HttpDelete("{id:Guid}")]
+        public string Delete(Guid id)
+        {
+            ArtProduct artProduct = new ArtProduct();
+
+            try
+            {
+                artProduct = _context.ArtProducts.First(a => a.ArtId == id);
+                _context.Remove(artProduct);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                return null; // An error occured
+            }
+
+            return "Deleted successfully";
         }
     }
 }
