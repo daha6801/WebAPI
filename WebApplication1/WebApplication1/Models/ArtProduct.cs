@@ -7,7 +7,7 @@ namespace WebApplication1.Models
     public class ArtProduct
     {
         [Key]
-        public int ArtId { get; set; }
+        public Guid ArtId { get; set; }
         public string ArtName { get; set; }
         public string ArtDesc { get; set; }
         public float ArtPrice { get; set; }
