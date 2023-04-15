@@ -26,7 +26,7 @@ namespace WebApplication1.Data
                     ArtDimensions = "172.5 x 278.5 cm",
                     ArtScore = 35,
                     isAvailable = true,
-                    imgBytes = File.ReadAllBytes($"../WebApplication1/Data/Images/Birth_Of_Venus.jpg"),
+		    imgBytes = new byte[0],
                 });
             });
         }
