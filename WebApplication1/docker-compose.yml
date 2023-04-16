@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  db:
+    container_name: sqlserverdb
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: NewPassword_123!
+      ACCEPT_EULA: Y
+    restart: always
+    healthcheck:
+        test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P NewPassword_123! -Q 'SELECT 1' || exit 1"]
+        interval: 10s
+        retries: 10
+        start_period: 10s
+        timeout: 3s    
+  app:
+    build:
+      context: .
+      dockerfile: WebApplication1/Dockerfile
+    ports:
+      - 7120:80
+    environment:
+      - "ConnectionStrings:ArtProductAppCon=Server=db,1433; Initial Catalog=ArtProductDB; User Id=sa; Password=NewPassword_123!; TrustServerCertificate=True;"
+    depends_on:
+      - db
+
