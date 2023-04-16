@@ -18,7 +18,6 @@ COPY . .
 RUN dotnet restore "WebApplication1.Migrations/WebApplication1.Migrations.csproj"
 COPY . .
 WORKDIR "/src/WebApplication1.Migrations"
-RUN dotnet tool install --global dotnet-ef
 RUN dotnet build "WebApplication1.Migrations.csproj" -c Release -o /app/migration
 
 FROM build AS publish
