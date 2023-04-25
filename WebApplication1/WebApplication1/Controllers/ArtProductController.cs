@@ -93,7 +93,11 @@ namespace WebApplication1.Controllers
             try
             {
                 ArtProduct product = _context.ArtProducts.Find(prod.ArtId);
-                if (product != null)
+                if (product == null)
+                {
+                    return "Art Product not found in the database.Please make sure to pass the correct ArtId.";
+                }
+                else
                 {
 
                     // Make changes on entity

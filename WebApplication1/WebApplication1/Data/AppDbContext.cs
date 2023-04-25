@@ -11,6 +11,7 @@ namespace WebApplication1.Data
         }
 
         public DbSet<ArtProduct> ArtProducts { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
