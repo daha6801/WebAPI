@@ -26,7 +26,29 @@ namespace WebApplication1.Data
                     ArtDimensions = "172.5 x 278.5 cm",
                     ArtScore = 35,
                     isAvailable = true,
-		    imgBytes = new byte[0],
+                    imgBytes = new byte[0],
+                });
+            });
+
+            _builder.Entity<User>(b =>
+            {
+                b.HasData(new User
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Email = "john_test@gmail.com",
+                    Phone = "612-666-1234",
+                    IsAdmin = true,
+                });
+                b.HasData(new User
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = "Jane",
+                    LastName = "Doe",
+                    Email = "jane_test@gmail.com",
+                    Phone = "612-666-3456",
+                    IsAdmin = false,
                 });
             });
         }
