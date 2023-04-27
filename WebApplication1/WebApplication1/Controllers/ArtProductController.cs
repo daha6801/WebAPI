@@ -30,10 +30,12 @@ namespace WebApplication1.Controllers
         {
             List<ArtProduct> artList = new List<ArtProduct>();
 
-            try {
+            try
+            {
                 artList = _context.ArtProducts.ToList();
             }
-            catch{
+            catch
+            {
                 return null; // An error occured
             }
 
@@ -83,40 +85,58 @@ namespace WebApplication1.Controllers
         [HttpPut]
         public string Put([FromForm] ArtProduct prod)
         {
-
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                prod.imgFile.CopyTo(memoryStream);
-                prod.imgBytes = memoryStream.ToArray();
-            }
-
             try
             {
                 ArtProduct product = _context.ArtProducts.Find(prod.ArtId);
                 if (product == null)
                 {
-                    return "Art Product not found in the database.Please make sure to pass the correct ArtId.";
+                    return "Art Product not found in the database. Please make sure to pass the correct ArtId.";
                 }
-                else
-                {
 
-                    // Make changes on entity
+                // Update the product properties that are included in the request
+                if (!string.IsNullOrEmpty(prod.ArtName))
+                {
                     product.ArtName = prod.ArtName;
-                    product.ArtDesc = prod.ArtDesc;
-                    product.ArtPrice = prod.ArtPrice;
-                    product.ArtScore = prod.ArtScore;
-                    product.isAvailable = prod.isAvailable;
-                    product.ArtDimensions = prod.ArtDimensions;
-                    product.imgBytes = prod.imgBytes;
                 }
+                if (!string.IsNullOrEmpty(prod.ArtDesc))
+                {
+                    product.ArtDesc = prod.ArtDesc;
+                }
+                if (prod.ArtPrice > 0)
+                {
+                    product.ArtPrice = prod.ArtPrice;
+                }
+                if (prod.ArtScore > 0)
+                {
+                    product.ArtScore = prod.ArtScore;
+                }
+                if (prod.isAvailable != null)
+                {
+                    product.isAvailable = prod.isAvailable;
+                }
+                if (!string.IsNullOrEmpty(prod.ArtDimensions))
+                {
+                    product.ArtDimensions = prod.ArtDimensions;
+                }
+
+                // Update the image if it's included in the request
+                if (prod.imgFile != null)
+                {
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        prod.imgFile.CopyTo(memoryStream);
+                        product.imgBytes = memoryStream.ToArray();
+                    }
+                }
+
                 _context.SaveChanges();
+
+                return "Updated Successfully";
             }
             catch (Exception ex)
             {
-                return null; // An error occured
+                return null; // An error occurred
             }
-
-            return "Updated Successfully";
         }
 
         [HttpDelete("{id:Guid}")]

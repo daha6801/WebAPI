@@ -8,15 +8,15 @@ namespace WebApplication1.Models
     {
         [Key]
         public Guid ArtId { get; set; }
-        public string ArtName { get; set; }
-        public string ArtDesc { get; set; }
-        public float ArtPrice { get; set; }
-        public bool isAvailable { get; set; } //sold or available
-        public string ArtDimensions { get; set; }
-        public int ArtScore { get; set; }
+        public string? ArtName { get; set; }
+        public string? ArtDesc { get; set; }
+        public float? ArtPrice { get; set; }
+        public bool? isAvailable { get; set; } //sold or available
+        public string? ArtDimensions { get; set; }
+        public int? ArtScore { get; set; }
 
         [NotMapped]
-        public IFormFile imgFile { get; set; }
+        public IFormFile? imgFile { get; set; }
         public byte[]? imgBytes { get; set; }
 
     }
