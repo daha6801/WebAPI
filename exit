@@ -1,0 +1,472 @@
+[33mcommit 83e97a248a6aae04704ca9f96a3f0b1797883a3f[m[33m ([m[1;36mHEAD -> [m[1;32mrefactor-migration-code[m[33m)[m
+Author: Nathan Maloney <nathan25maloney@gmail.com>
+Date:   Sat Apr 15 22:30:51 2023 -0500
+
+    working on running the migrations
+
+ WebApplication1/WebApplication1/Dockerfile | 1 [32m+[m
+ 1 file changed, 1 insertion(+)
+
+[33mcommit 4f6e110c6538edd872755dfa1e5c809f71de7cbf[m[33m ([m[1;31morigin/refactor-migration-code[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-29-65.ec2.internal>
+Date:   Sat Apr 15 21:33:11 2023 +0000
+
+    Add docker compose and docker file
+
+ WebApplication1/WebApplication1/Data/DbInitializer.cs |  2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/Dockerfile            | 33 [32m+++++++++++++++++++++++++++++++++[m
+ WebApplication1/docker-compose.yml                    | 28 [32m++++++++++++++++++++++++++++[m
+ 3 files changed, 62 insertions(+), 1 deletion(-)
+
+[33mcommit 2d722ce5667b6ff1077f6aa1a2b774bae6574f7e[m
+Author: 0400-Rashmi <daha6801@stthomas.edu>
+Date:   Sat Apr 15 14:49:03 2023 -0500
+
+    Adding a utility project to apply the database migrations
+
+ WebApplication1/.vs/ProjectEvaluation/webapplication1.metadata.v6.1                                                                        |  Bin [31m211901[m -> [32m232749[m bytes
+ WebApplication1/.vs/ProjectEvaluation/webapplication1.projects.v6.1                                                                        |  Bin [31m393186[m -> [32m88439[m bytes
+ WebApplication1/.vs/WebApplication1/DesignTimeBuild/.dtbcache.v2                                                                           |  Bin [31m145336[m -> [32m185423[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/16e555d9-8f26-42dd-9b55-e5be2ca5d04d.vsidx                                            |  Bin [31m7970[m -> [32m0[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/4b6b27e2-05d6-4df0-b179-5277f744f3bf.vsidx                                            |  Bin [31m0[m -> [32m2168971[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/7a19c972-5a54-4d68-9134-a0cc0b08e702.vsidx                                            |  Bin [31m0[m -> [32m2168347[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/7bf1b505-80a9-447a-a418-64ac63a59197.vsidx                                            |  Bin [31m0[m -> [32m2178867[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/8fcaec71-e4ef-46d1-9cd4-279e8de3fc62.vsidx                                            |  Bin [31m7123[m -> [32m0[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/a8f2f6a3-4cfe-4fa5-bbdd-8074bd84425f.vsidx                                            |  Bin [31m574657[m -> [32m0[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/db5dcda4-8dc6-42c0-bd61-3af7f5fb4773.vsidx                                            |  Bin [31m0[m -> [32m2171430[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/fa64f668-9fc7-42ce-9cc0-0c93e63305f5.vsidx                                            |  Bin [31m2161334[m -> [32m0[m bytes
+ WebApplication1/.vs/WebApplication1/v17/.futdcache.v2                                                                                      |  Bin [31m214[m -> [32m431[m bytes
+ WebApplication1/.vs/WebApplication1/v17/.suo                                                                                               |  Bin [31m64512[m -> [32m86528[m bytes
+ WebApplication1/WebApplication1.Migrations/ConsoleStartup.cs                                                                               |   39 [32m+[m
+ WebApplication1/WebApplication1.Migrations/Program.cs                                                                                      |   21 [32m+[m
+ WebApplication1/WebApplication1.Migrations/WebApplication1.Migrations.csproj                                                               |   19 [32m+[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Azure.Core.dll                                                                 |  Bin [31m0[m -> [32m266152[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Azure.Identity.dll                                                             |  Bin [31m0[m -> [32m308128[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll                                             |  Bin [31m0[m -> [32m55976[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll                                    |  Bin [31m0[m -> [32m68264[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Bcl.AsyncInterfaces.dll                                              |  Bin [31m0[m -> [32m14720[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Data.SqlClient.dll                                                   |  Bin [31m0[m -> [32m275952[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll                                 |  Bin [31m0[m -> [32m34712[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll                                   |  Bin [31m0[m -> [32m1843080[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll                                    |  Bin [31m0[m -> [32m486848[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll                                              |  Bin [31m0[m -> [32m2082752[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll                                  |  Bin [31m0[m -> [32m31880[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll                                        |  Bin [31m0[m -> [32m43648[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll                            |  Bin [31m0[m -> [32m29328[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll                      |  Bin [31m0[m -> [32m45200[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll                                   |  Bin [31m0[m -> [32m85152[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll                                  |  Bin [31m0[m -> [32m64120[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll                                               |  Bin [31m0[m -> [32m48248[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.Options.dll                                               |  Bin [31m0[m -> [32m61560[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll                                            |  Bin [31m0[m -> [32m42624[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Identity.Client.Extensions.Msal.dll                                  |  Bin [31m0[m -> [32m62984[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Identity.Client.dll                                                  |  Bin [31m0[m -> [32m1422304[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll                                       |  Bin [31m0[m -> [32m18840[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll                                      |  Bin [31m0[m -> [32m73120[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll                                            |  Bin [31m0[m -> [32m34184[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll                            |  Bin [31m0[m -> [32m114072[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll                                          |  Bin [31m0[m -> [32m38288[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll                                             |  Bin [31m0[m -> [32m974240[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Owin.Host.SystemWeb.dll                                              |  Bin [31m0[m -> [32m161704[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Owin.Security.OAuth.dll                                              |  Bin [31m0[m -> [32m86928[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Owin.Security.dll                                                    |  Bin [31m0[m -> [32m65960[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Owin.dll                                                             |  Bin [31m0[m -> [32m122256[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.SqlServer.Server.dll                                                 |  Bin [31m0[m -> [32m23976[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll                                               |  Bin [31m0[m -> [32m27528[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll                                                       |  Bin [31m0[m -> [32m97720[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Newtonsoft.Json.dll                                                            |  Bin [31m0[m -> [32m695336[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/Owin.dll                                                                       |  Bin [31m0[m -> [32m4608[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Configuration.ConfigurationManager.dll                                  |  Bin [31m0[m -> [32m381832[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Data.SqlClient.dll                                                      |  Bin [31m0[m -> [32m268224[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Drawing.Common.dll                                                      |  Bin [31m0[m -> [32m173448[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll                                            |  Bin [31m0[m -> [32m89480[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Memory.Data.dll                                                         |  Bin [31m0[m -> [32m21368[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Runtime.Caching.dll                                                     |  Bin [31m0[m -> [32m84360[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Security.Cryptography.ProtectedData.dll                                 |  Bin [31m0[m -> [32m21384[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Security.Permissions.dll                                                |  Bin [31m0[m -> [32m98184[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/System.Windows.Extensions.dll                                                  |  Bin [31m0[m -> [32m25480[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.Migrations.deps.json                                           | 1570 [32m++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.Migrations.dll                                                 |  Bin [31m0[m -> [32m8704[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.Migrations.exe                                                 |  Bin [31m0[m -> [32m147968[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.Migrations.pdb                                                 |  Bin [31m0[m -> [32m21876[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.Migrations.runtimeconfig.json                                  |   18 [32m+[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.deps.json                                                      | 1439 [32m+++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.dll                                                            |  Bin [31m0[m -> [32m90624[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.exe                                                            |  Bin [31m0[m -> [32m147968[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.pdb                                                            |  Bin [31m0[m -> [32m41156[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.runtimeconfig.json                                             |   20 [32m+[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/WebApplication1.staticwebassets.runtime.json                                   |    1 [32m+[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/appsettings.Development.json                                                   |    8 [32m+[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/appsettings.json                                                               |   12 [32m+[m
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll                      |  Bin [31m0[m -> [32m957376[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll                      |  Bin [31m0[m -> [32m419208[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll                   |  Bin [31m0[m -> [32m1540080[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll                       |  Bin [31m0[m -> [32m433088[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll                     |  Bin [31m0[m -> [32m558992[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win-arm64/native/sni.dll                                              |  Bin [31m0[m -> [32m174224[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll                       |  Bin [31m0[m -> [32m502672[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win-x64/native/sni.dll                                                |  Bin [31m0[m -> [32m160040[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll                       |  Bin [31m0[m -> [32m410048[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win-x86/native/sni.dll                                                |  Bin [31m0[m -> [32m136488[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll                       |  Bin [31m0[m -> [32m1025984[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll                |  Bin [31m0[m -> [32m52104[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll                       |  Bin [31m0[m -> [32m437128[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll                   |  Bin [31m0[m -> [32m42376[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll                    |  Bin [31m0[m -> [32m1624056[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll                     |  Bin [31m0[m -> [32m85896[m bytes
+ WebApplication1/WebApplication1.Migrations/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll |  Bin [31m0[m -> [32m33152[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs                                 |    4 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.AssemblyInfo.cs                                     |   23 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.AssemblyInfoInputs.cache                            |    1 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.GeneratedMSBuildEditorConfig.editorconfig           |   11 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.GlobalUsings.g.cs                                   |    8 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.assets.cache                                        |  Bin [31m0[m -> [32m58009[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.csproj.AssemblyReference.cache                      |  Bin [31m0[m -> [32m197363[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.csproj.BuildWithSkipAnalyzers                       |    0
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.csproj.CopyComplete                                 |    0
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.csproj.CoreCompileInputs.cache                      |    1 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.csproj.FileListAbsolute.txt                         |   86 [32m++[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.dll                                                 |  Bin [31m0[m -> [32m8704[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.genruntimeconfig.cache                              |    1 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/WebApplication1.Migrations.pdb                                                 |  Bin [31m0[m -> [32m21876[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/apphost.exe                                                                    |  Bin [31m0[m -> [32m147968[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/ref/WebApplication1.Migrations.dll                                             |  Bin [31m0[m -> [32m7168[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/Debug/net6.0/refint/WebApplication1.Migrations.dll                                          |  Bin [31m0[m -> [32m7168[m bytes
+ WebApplication1/WebApplication1.Migrations/obj/WebApplication1.Migrations.csproj.nuget.dgspec.json                                         |  173 [32m++++[m
+ WebApplication1/WebApplication1.Migrations/obj/WebApplication1.Migrations.csproj.nuget.g.props                                             |   19 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/WebApplication1.Migrations.csproj.nuget.g.targets                                           |    6 [32m+[m
+ WebApplication1/WebApplication1.Migrations/obj/project.assets.json                                                                         | 4428 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1.Migrations/obj/project.nuget.cache                                                                         |  154 [32m++++[m
+ WebApplication1/WebApplication1.sln                                                                                                        |    8 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/Data/DbInitializer.cs                                                                                      |    2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/WebApplication1.csproj                                                                                     |    4 [31m-[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.dll                                                                       |  Bin [31m90624[m -> [32m90624[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.pdb                                                                       |  Bin [31m41076[m -> [32m41156[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.AssemblyReference.cache                                            |  Bin [31m209853[m -> [32m193047[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.FileListAbsolute.txt                                               |   94 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.dll                                                                       |  Bin [31m373760[m -> [32m90624[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.pdb                                                                       |  Bin [31m41036[m -> [32m41156[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/refint/WebApplication1.dll                                                                |  Bin [31m325120[m -> [32m42496[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets.build.json                                                                |  264 [32m+++[m[31m---[m
+ 124 files changed, 8249 insertions(+), 185 deletions(-)
+
+[33mcommit 5b4340ed31226fa7f1d68c3f4c36e94eeacb603b[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/add-user-table-controller[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: daha6801 <49347349+daha6801@users.noreply.github.com>
+Date:   Thu Apr 6 13:33:58 2023 -0500
+
+    Test branch rashmi (#2)
+    
+    * Update the seed data
+    
+    * Added Delete Route for ArtProduct API, updated the Id to be Guid instead of Id, Added updated seed data for the ArtProduct DB
+
+ WebApplication1/WebApplication1/Controllers/ArtProductController.cs                             |  24 [32m++++++++++++++++++++++[m[31m--[m
+ WebApplication1/WebApplication1/Data/DbInitializer.cs                                           |  32 [32m+++++[m[31m---------------------------[m
+ WebApplication1/WebApplication1/Data/Images/Birth_Of_Venus.jpg                                  | Bin [31m0[m -> [32m21162[m bytes
+ WebApplication1/WebApplication1/Migrations/20230307181028_initial.Designer.cs                   | 101 [31m-----------------------------------------------------------------------------------------------------[m
+ WebApplication1/WebApplication1/Migrations/20230307181028_initial.cs                            |  52 [31m----------------------------------------------------[m
+ WebApplication1/WebApplication1/Migrations/20230406165202_initial.Designer.cs                   |  78 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/Migrations/20230406165202_initial.cs                            |  45 [32m+++++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/Migrations/AppDbContextModelSnapshot.cs                         |  39 [32m++++++++[m[31m-------------------------------[m
+ WebApplication1/WebApplication1/Migrations/ArtProduct_InitialCreate.cs                          |  39 [31m---------------------------------------[m
+ WebApplication1/WebApplication1/Models/ArtProduct.cs                                            |   2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/WebApplication1.csproj                                          |   4 [32m++++[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.dll                            | Bin [31m74240[m -> [32m90624[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.pdb                            | Bin [31m41376[m -> [32m41076[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.CoreCompileInputs.cache |   2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.dll                            | Bin [31m74240[m -> [32m373760[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.pdb                            | Bin [31m41376[m -> [32m41036[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/ref/WebApplication1.dll                        | Bin [31m21504[m -> [32m42496[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/refint/WebApplication1.dll                     | Bin [31m21504[m -> [32m325120[m bytes
+ 18 files changed, 164 insertions(+), 254 deletions(-)
+
+[33mcommit 1193f1e9722fa9dd5fb5032ff2f17bad64504f6c[m
+Author: 0400-Rashmi <daha6801@stthomas.edu>
+Date:   Wed Mar 8 14:51:39 2023 -0600
+
+    Adding PUT api endpoint for artproduct
+
+ WebApplication1/WebApplication1/Controllers/ArtProductController.cs         |  36 [32m++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.dll        | Bin [31m73728[m -> [32m74240[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.pdb        | Bin [31m41124[m -> [32m41376[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.dll        | Bin [31m73728[m -> [32m74240[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.pdb        | Bin [31m41124[m -> [32m41376[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/ref/WebApplication1.dll    | Bin [31m21504[m -> [32m21504[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/refint/WebApplication1.dll | Bin [31m21504[m -> [32m21504[m bytes
+ 7 files changed, 36 insertions(+)
+
+[33mcommit 8832dd161e0d71731d187ee01fe373fb1c563018[m
+Author: 0400-Rashmi <daha6801@stthomas.edu>
+Date:   Tue Mar 7 15:30:20 2023 -0600
+
+    Added a new route for Get by Id API endpoint for ArtProduct
+
+ WebApplication1/WebApplication1/Controllers/ArtProductController.cs         |  21 [32m++++++++++++++++++[m[31m---[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.dll        | Bin [31m73216[m -> [32m73728[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.pdb        | Bin [31m40992[m -> [32m41124[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.dll        | Bin [31m73216[m -> [32m73728[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.pdb        | Bin [31m40992[m -> [32m41124[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/ref/WebApplication1.dll    | Bin [31m21504[m -> [32m21504[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/refint/WebApplication1.dll | Bin [31m21504[m -> [32m21504[m bytes
+ 7 files changed, 18 insertions(+), 3 deletions(-)
+
+[33mcommit a342739acd73daf03a04885d2a1f921ee7d200e7[m
+Author: 0400-Rashmi <daha6801@stthomas.edu>
+Date:   Tue Mar 7 12:47:23 2023 -0600
+
+    Implemented EntityFramework for models and added database migrations
+
+ WebApplication1/WebApplication1/Controllers/ArtProductController.cs                                                             |   62 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/Data/AppDbContext.cs                                                                            |   20 [32m+[m
+ WebApplication1/WebApplication1/Data/DbInitializer.cs                                                                           |   56 [32m++[m
+ WebApplication1/WebApplication1/Migrations/20230307181028_initial.Designer.cs                                                   |  101 [32m+++[m
+ WebApplication1/WebApplication1/Migrations/20230307181028_initial.cs                                                            |   52 [32m++[m
+ WebApplication1/WebApplication1/Migrations/AppDbContextModelSnapshot.cs                                                         |   98 [32m+++[m
+ WebApplication1/WebApplication1/Migrations/ArtProduct_InitialCreate.cs                                                          |   39 [32m+[m
+ WebApplication1/WebApplication1/Models/ArtProduct.cs                                                                            |    7 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/Program.cs                                                                                      |    6 [32m+[m
+ WebApplication1/WebApplication1/WebApplication1.csproj                                                                          |    6 [32m+[m
+ WebApplication1/WebApplication1/appsettings.json                                                                                |    2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Azure.Core.dll                                                                 |  Bin [31m0[m -> [32m266152[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Azure.Identity.dll                                                             |  Bin [31m0[m -> [32m308128[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Humanizer.dll                                                                  |  Bin [31m0[m -> [32m355944[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Bcl.AsyncInterfaces.dll                                              |  Bin [31m0[m -> [32m14720[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Data.SqlClient.dll                                                   |  Bin [31m0[m -> [32m275952[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll                                 |  Bin [31m0[m -> [32m34720[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll                                       |  Bin [31m0[m -> [32m406464[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll                                   |  Bin [31m0[m -> [32m1841088[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.SqlServer.dll                                    |  Bin [31m0[m -> [32m486336[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll                                              |  Bin [31m0[m -> [32m2082208[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll                                  |  Bin [31m0[m -> [32m31880[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll                                        |  Bin [31m0[m -> [32m43648[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll                            |  Bin [31m0[m -> [32m29328[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll                      |  Bin [31m0[m -> [32m45200[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll                                   |  Bin [31m0[m -> [32m85152[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll                                       |  Bin [31m0[m -> [32m81024[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll                                  |  Bin [31m0[m -> [32m64120[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll                                               |  Bin [31m0[m -> [32m48248[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Options.dll                                               |  Bin [31m0[m -> [32m61560[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll                                            |  Bin [31m0[m -> [32m42624[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Identity.Client.Extensions.Msal.dll                                  |  Bin [31m0[m -> [32m62984[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Identity.Client.dll                                                  |  Bin [31m0[m -> [32m1422304[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll                                       |  Bin [31m0[m -> [32m18840[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll                                      |  Bin [31m0[m -> [32m73120[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll                                            |  Bin [31m0[m -> [32m34184[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll                            |  Bin [31m0[m -> [32m114072[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll                                          |  Bin [31m0[m -> [32m38288[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll                                             |  Bin [31m0[m -> [32m974240[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.SqlServer.Server.dll                                                 |  Bin [31m0[m -> [32m23976[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Win32.SystemEvents.dll                                               |  Bin [31m0[m -> [32m27528[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Mono.TextTemplating.dll                                                        |  Bin [31m0[m -> [32m114688[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.CodeDom.dll                                                             |  Bin [31m0[m -> [32m187224[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Configuration.ConfigurationManager.dll                                  |  Bin [31m0[m -> [32m381832[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Drawing.Common.dll                                                      |  Bin [31m0[m -> [32m173448[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll                                            |  Bin [31m0[m -> [32m89480[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Memory.Data.dll                                                         |  Bin [31m0[m -> [32m21368[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Runtime.Caching.dll                                                     |  Bin [31m0[m -> [32m84360[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Security.Cryptography.ProtectedData.dll                                 |  Bin [31m0[m -> [32m21384[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Security.Permissions.dll                                                |  Bin [31m0[m -> [32m98184[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Text.Encodings.Web.dll                                                  |  Bin [31m0[m -> [32m71312[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Text.Json.dll                                                           |  Bin [31m0[m -> [32m543392[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Windows.Extensions.dll                                                  |  Bin [31m0[m -> [32m25480[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.deps.json                                                      | 1152 [32m++++++++++++++++++++++++++++[m[31m-[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.dll                                                            |  Bin [31m55296[m -> [32m73216[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.pdb                                                            |  Bin [31m37396[m -> [32m40992[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.runtimeconfig.json                                             |    1 [32m+[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/appsettings.json                                                               |    2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll                      |  Bin [31m0[m -> [32m71312[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll                      |  Bin [31m0[m -> [32m419208[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll                   |  Bin [31m0[m -> [32m1540080[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll                       |  Bin [31m0[m -> [32m433088[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll                     |  Bin [31m0[m -> [32m558992[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll                       |  Bin [31m0[m -> [32m502672[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll                       |  Bin [31m0[m -> [32m410048[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll                |  Bin [31m0[m -> [32m52104[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll                       |  Bin [31m0[m -> [32m437128[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll                   |  Bin [31m0[m -> [32m42376[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll                    |  Bin [31m0[m -> [32m1624056[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll                     |  Bin [31m0[m -> [32m85896[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll |  Bin [31m0[m -> [32m33152[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.assets.cache                                                   |  Bin [31m13317[m -> [32m48027[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.AssemblyReference.cache                                 |  Bin [31m180122[m -> [32m209853[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.CoreCompileInputs.cache                                 |    2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.FileListAbsolute.txt                                    |   55 [32m++[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.dll                                                            |  Bin [31m55296[m -> [32m73216[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.genruntimeconfig.cache                                         |    2 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.pdb                                                            |  Bin [31m37396[m -> [32m40992[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/ref/WebApplication1.dll                                                        |  Bin [31m18944[m -> [32m21504[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/refint/WebApplication1.dll                                                     |  Bin [31m18944[m -> [32m21504[m bytes
+ WebApplication1/WebApplication1/obj/WebApplication1.csproj.EntityFrameworkCore.targets                                          |   28 [32m+[m
+ WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json                                                    |   14 [32m+[m
+ WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.g.props                                                        |    4 [32m+[m
+ WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.g.targets                                                      |    7 [32m+[m[31m-[m
+ WebApplication1/WebApplication1/obj/project.assets.json                                                                         | 3950 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m[31m-----------[m
+ WebApplication1/WebApplication1/obj/project.nuget.cache                                                                         |   72 [32m+[m[31m-[m
+ 86 files changed, 5261 insertions(+), 477 deletions(-)
+
+[33mcommit af20b4e050b00558a7ad0809bb38e6171c2b2625[m
+Author: 0400-Rashmi <daha6801@stthomas.edu>
+Date:   Sat Mar 4 21:47:54 2023 -0600
+
+    Added initial Get and Post Apis for Art Products
+
+ WebApplication1/.vs/ProjectEvaluation/webapplication1.metadata.v6.1                                                                 |   Bin [31m0[m -> [32m211901[m bytes
+ WebApplication1/.vs/ProjectEvaluation/webapplication1.projects.v6.1                                                                 |   Bin [31m0[m -> [32m393186[m bytes
+ WebApplication1/.vs/WebApplication1/DesignTimeBuild/.dtbcache.v2                                                                    |   Bin [31m0[m -> [32m145336[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/16e555d9-8f26-42dd-9b55-e5be2ca5d04d.vsidx                                     |   Bin [31m0[m -> [32m7970[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/8fcaec71-e4ef-46d1-9cd4-279e8de3fc62.vsidx                                     |   Bin [31m0[m -> [32m7123[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/a8f2f6a3-4cfe-4fa5-bbdd-8074bd84425f.vsidx                                     |   Bin [31m0[m -> [32m574657[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/fa64f668-9fc7-42ce-9cc0-0c93e63305f5.vsidx                                     |   Bin [31m0[m -> [32m2161334[m bytes
+ WebApplication1/.vs/WebApplication1/FileContentIndex/read.lock                                                                      |     0
+ WebApplication1/.vs/WebApplication1/config/applicationhost.config                                                                   |  1026 [32m+++++++++[m
+ WebApplication1/.vs/WebApplication1/v17/.futdcache.v2                                                                               |   Bin [31m0[m -> [32m214[m bytes
+ WebApplication1/.vs/WebApplication1/v17/.suo                                                                                        |   Bin [31m0[m -> [32m64512[m bytes
+ WebApplication1/WebApplication1.sln                                                                                                 |    25 [32m+[m
+ WebApplication1/WebApplication1/Controllers/ArtProductController.cs                                                                 |    78 [32m+[m
+ WebApplication1/WebApplication1/Controllers/HomeController.cs                                                                       |    32 [32m+[m
+ WebApplication1/WebApplication1/Models/ArtProduct.cs                                                                                |    18 [32m+[m
+ WebApplication1/WebApplication1/Models/ErrorViewModel.cs                                                                            |     9 [32m+[m
+ WebApplication1/WebApplication1/Models/User.cs                                                                                      |    23 [32m+[m
+ WebApplication1/WebApplication1/Program.cs                                                                                          |    27 [32m+[m
+ WebApplication1/WebApplication1/Properties/launchSettings.json                                                                      |    28 [32m+[m
+ WebApplication1/WebApplication1/Startup.cs                                                                                          |    65 [32m+[m
+ WebApplication1/WebApplication1/Views/Home/Index.cshtml                                                                             |     8 [32m+[m
+ WebApplication1/WebApplication1/Views/Home/Privacy.cshtml                                                                           |     6 [32m+[m
+ WebApplication1/WebApplication1/Views/Shared/Error.cshtml                                                                           |    25 [32m+[m
+ WebApplication1/WebApplication1/Views/Shared/_Layout.cshtml                                                                         |    49 [32m+[m
+ WebApplication1/WebApplication1/Views/Shared/_Layout.cshtml.css                                                                     |    48 [32m+[m
+ WebApplication1/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml                                                       |     2 [32m+[m
+ WebApplication1/WebApplication1/Views/_ViewImports.cshtml                                                                           |     3 [32m+[m
+ WebApplication1/WebApplication1/Views/_ViewStart.cshtml                                                                             |     3 [32m+[m
+ WebApplication1/WebApplication1/WebApplication1.csproj                                                                              |    16 [32m+[m
+ WebApplication1/WebApplication1/WebApplication1.csproj.user                                                                         |     7 [32m+[m
+ WebApplication1/WebApplication1/appsettings.Development.json                                                                        |     8 [32m+[m
+ WebApplication1/WebApplication1/appsettings.json                                                                                    |    12 [32m+[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.AspNetCore.JsonPatch.dll                                                 |   Bin [31m0[m -> [32m55976[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll                                        |   Bin [31m0[m -> [32m68264[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Owin.Host.SystemWeb.dll                                                  |   Bin [31m0[m -> [32m161704[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Owin.Security.OAuth.dll                                                  |   Bin [31m0[m -> [32m86928[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Owin.Security.dll                                                        |   Bin [31m0[m -> [32m65960[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Microsoft.Owin.dll                                                                 |   Bin [31m0[m -> [32m122256[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll                                                           |   Bin [31m0[m -> [32m97720[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Newtonsoft.Json.dll                                                                |   Bin [31m0[m -> [32m695336[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/Owin.dll                                                                           |   Bin [31m0[m -> [32m4608[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/System.Data.SqlClient.dll                                                          |   Bin [31m0[m -> [32m268224[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.deps.json                                                          |   339 [32m+++[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.dll                                                                |   Bin [31m0[m -> [32m55296[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.exe                                                                |   Bin [31m0[m -> [32m147968[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.pdb                                                                |   Bin [31m0[m -> [32m37396[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.runtimeconfig.json                                                 |    19 [32m+[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/WebApplication1.staticwebassets.runtime.json                                       |     1 [32m+[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/appsettings.Development.json                                                       |     8 [32m+[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/appsettings.json                                                                   |    12 [32m+[m
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll                          |   Bin [31m0[m -> [32m957376[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win-arm64/native/sni.dll                                                  |   Bin [31m0[m -> [32m174224[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win-x64/native/sni.dll                                                    |   Bin [31m0[m -> [32m160040[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win-x86/native/sni.dll                                                    |   Bin [31m0[m -> [32m136488[m bytes
+ WebApplication1/WebApplication1/bin/Debug/net6.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll                           |   Bin [31m0[m -> [32m1025984[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs                                     |     4 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.AssemblyInfo.cs                                                    |    23 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.AssemblyInfoInputs.cache                                           |     1 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.GeneratedMSBuildEditorConfig.editorconfig                          |    45 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.GlobalUsings.g.cs                                                  |    17 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.MvcApplicationPartsAssemblyInfo.cache                              |     0
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.RazorAssemblyInfo.cache                                            |     1 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.RazorAssemblyInfo.cs                                               |    18 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.assets.cache                                                       |   Bin [31m0[m -> [32m13317[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.AssemblyReference.cache                                     |   Bin [31m0[m -> [32m180122[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.BuildWithSkipAnalyzers                                      |     0
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.CopyComplete                                                |     0
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.CoreCompileInputs.cache                                     |     1 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.csproj.FileListAbsolute.txt                                        |    94 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.dll                                                                |   Bin [31m0[m -> [32m55296[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.genruntimeconfig.cache                                             |     1 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/WebApplication1.pdb                                                                |   Bin [31m0[m -> [32m37396[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/apphost.exe                                                                        |   Bin [31m0[m -> [32m147968[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/ref/WebApplication1.dll                                                            |   Bin [31m0[m -> [32m18944[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/refint/WebApplication1.dll                                                         |   Bin [31m0[m -> [32m18944[m bytes
+ WebApplication1/WebApplication1/obj/Debug/net6.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css                                   |    48 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/scopedcss/bundle/WebApplication1.styles.css                                        |    49 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/scopedcss/projectbundle/WebApplication1.bundle.scp.css                             |    49 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets.build.json                                                         |  1074 [32m+++++++++[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets.development.json                                                   |     1 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets.pack.json                                                          |   265 [32m+++[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets/msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssets.props |   980 [32m+++++++++[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets/msbuild.build.WebApplication1.props                                |     3 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.WebApplication1.props                  |     3 [32m+[m
+ WebApplication1/WebApplication1/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.WebApplication1.props                      |     3 [32m+[m
+ WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.dgspec.json                                                        |    87 [32m+[m
+ WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.g.props                                                            |    16 [32m+[m
+ WebApplication1/WebApplication1/obj/WebApplication1.csproj.nuget.g.targets                                                          |     2 [32m+[m
+ WebApplication1/WebApplication1/obj/project.assets.json                                                                             |   980 [32m+++++++++[m
+ WebApplication1/WebApplication1/obj/project.nuget.cache                                                                             |    79 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/css/site.css                                                                                |    18 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/favicon.ico                                                                                 |   Bin [31m0[m -> [32m5430[m bytes
+ WebApplication1/WebApplication1/wwwroot/js/site.js                                                                                  |     4 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/LICENSE                                                                       |    22 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css                                                   |  4997 [32m++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map                                               |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css                                               |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map                                           |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css                                               |  4996 [32m++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map                                           |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css                                           |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map                                       |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css                                                 |   427 [32m++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map                                             |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css                                             |     8 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map                                         |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css                                             |   424 [32m++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map                                         |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css                                         |     8 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map                                     |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css                                              |  4866 [32m+++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map                                          |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css                                          |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map                                      |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css                                          |  4857 [32m+++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map                                      |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css                                      |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map                                  |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.css                                                        | 11221 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map                                                    |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css                                                    |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map                                                |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css                                                    | 11197 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map                                                |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css                                                |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map                                            |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js                                                   |  6780 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map                                               |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js                                               |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map                                           |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js                                                      |  4977 [32m++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map                                                  |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js                                                  |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map                                              |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.js                                                          |  5026 [32m+++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map                                                      |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js                                                      |     7 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map                                                  |     1 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt                                               |    12 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js                            |   432 [32m++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js                        |     5 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation/LICENSE.md                                                            |    22 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation/dist/additional-methods.js                                            |  1158 [32m++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation/dist/additional-methods.min.js                                        |     4 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation/dist/jquery.validate.js                                               |  1601 [32m++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js                                           |     4 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery/LICENSE.txt                                                                      |    36 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery/dist/jquery.js                                                                   | 10872 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery/dist/jquery.min.js                                                               |     2 [32m+[m
+ WebApplication1/WebApplication1/wwwroot/lib/jquery/dist/jquery.min.map                                                              |     1 [32m+[m
+ 150 files changed, 79803 insertions(+)
+
+[33mcommit 510cf78e60508538a8c712bd1ff7c475cbbbb35d[m
+Author: daha6801 <49347349+daha6801@users.noreply.github.com>
+Date:   Sat Mar 4 21:40:50 2023 -0600
+
+    Initial commit
+
+ README.md | 2 [32m++[m
+ 1 file changed, 2 insertions(+)
