@@ -1,4 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using WebApplication1.Data;
 using WebApplication1.Models;
 
@@ -9,12 +17,63 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-
         private readonly AppDbContext _context;
 
         public UserController(AppDbContext context)
         {
             _context = context;
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginModel loginModel)
+        {
+            var user = _context.Users.SingleOrDefault(u => u.Email == loginModel.Email);
+
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            if (user.IsAdmin && loginModel.Password == "adminpassword")
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.Email),
+                    new Claim(ClaimTypes.Role, "admin"),
+                };
+
+                var identity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                return Ok();
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpGet("admin")]
+        public List<User> GetAdmin()
+        {
+            List<User> usersList = new List<User>();
+
+            try
+            {
+                usersList = _context.Users.ToList();
+            }
+            catch
+            {
+                return null; // An error occurred
+            }
+
+            return usersList;
         }
 
         [HttpGet]
